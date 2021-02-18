@@ -59,7 +59,7 @@ Setup a Mac Silicon for Gitlab CI
 
 ### React
 
-
+`CI=false npm run-script build`
 
 ### Docker Runner
 
@@ -67,3 +67,12 @@ Setup a Mac Silicon for Gitlab CI
 
 
 `docker buildx build --platform linux/amd64 -t username/demo:latest --push .`
+
+### Push To GCloud
+
+```
+. ~/google-cloud-sdk/path.bash.inc
+echo $GCLOUD_SERVICE_KEY | base64 -d > $HOME/gcloud-service-key.json
+gcloud auth activate-service-account --key-file $HOME/gcloud-service-key.json
+gcloud config set project $BUILD_REGISTRY
+```

@@ -25,13 +25,11 @@ Setup a Mac Silicon for Gitlab CI
 
 * xCode
 * [Docker](https://docs.docker.com/docker-for-mac/apple-m1/)
-* [Go](https://golang.org/dl/)
-* [Node](https://nodejs.org/en/)
+* [Go](https://golang.org/dl/) - install `go1.16.darwin-arm64.pkg`
+* [Node](https://nodejs.org/en/) - install `15.10.0 Current`
 
 
-## Ci Setup
-
-### Gitlab Runner
+## Gitlab Runner Native
 
 [GitLab Runner on macOS](https://gitlab.com/gitlab-org/gitlab-runner/blob/master/docs/install/osx.md)
 
@@ -50,6 +48,21 @@ Setup a Mac Silicon for Gitlab CI
 ### Run as service 
 
 `brew services start gitlab-runner`
+
+## Gitlab Runner Docker
+
+[DockerCompose]()
+
+### Register Runner
+
+`docker run --rm -it -v /Users/admin/Documents/runner/data:/etc/gitlab-runner gitlab/gitlab-runner register`
+
+* Enter Gitlab URL: `https://gitlab.com`
+* Enter Registration Token: `xxxx`
+* Enter Description: `MacDocker`
+* Enter Tags: `macdocker`
+* Enter Executor: `docker`
+* Enter Default Docker image: `docker:latest`
 
 ## Create Docker Images
 

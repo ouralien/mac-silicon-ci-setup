@@ -1,0 +1,10 @@
+version: '2'
+services:
+  ci-runner:
+    container_name: ci-runner 
+    image: gitlab/gitlab-runner:latest 
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /Users/admin/Documents/runner/data:/etc/gitlab-runner
+
